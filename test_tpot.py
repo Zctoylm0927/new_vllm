@@ -8,6 +8,8 @@ client = OpenAI(
     api_key=openai_api_key,
     base_url=openai_api_base,
 )
+
+
 def get_tpot(content: str):
     start_time = time.time()
     chat_response = client.chat.completions.create(
