@@ -873,6 +873,8 @@ class Scheduler:
         seq_groups: List[ScheduledSequenceGroup] = []
 
         waiting_queue = self.waiting
+        if self.scheduler_config.policy == 'active_priority':
+            waiting_queue = deque(sorted(self.waiting, key=self._get_priority))
 
         leftover_waiting_sequences: Deque[SequenceGroup] = deque()
         while self._passed_delay(time.time()) and waiting_queue:
@@ -980,7 +982,22 @@ class Scheduler:
             ignored_seq_groups=ignored_seq_groups,
             num_lookahead_slots=self._get_num_lookahead_slots(
                 is_prefill=True, enable_chunking=enable_chunking))
-
+        
+    def _should_active_preempt(self, is_swapped) -> bool:
+        """Check if we should preempt active requests.
+        
+        This is used to preempt active requests to schedule new requests.
+        """
+        # print(self.scheduler_config.policy)
+        waiting_queue = deque(sorted(self.waiting, key=self._get_priority))
+        swapped_queue = deque(sorted(self.swapped, key=self._get_priority))
+        if is_swapped:
+            if waiting_queue and self._get_priority(waiting_queue[0]) > self._get_priority(swapped_queue[0]):
+                return True # self.scheduler_config.policy == 'active_priority'
+        else:
+            return True
+        return False
+    
     def _schedule_default(self) -> SchedulerOutputs:
         """Schedule queued requests.
         
@@ -1008,7 +1025,8 @@ class Scheduler:
         swapped_in = SchedulerSwappedInOutputs.create_empty()
 
         # If any requests are swapped, prioritized swapped requests.
-        if not self.swapped:
+        if self._should_active_preempt(self.swapped):
+            #print("[1]")
             prefills = self._schedule_prefills(budget,
                                                curr_loras,
                                                enable_chunking=False)
@@ -1215,7 +1233,6 @@ class Scheduler:
         # This function call changes the internal states of the scheduler
         # such as self.running, self.swapped, and self.waiting.
         scheduler_start_time = time.perf_counter()
-
         scheduler_outputs: SchedulerOutputs = self._schedule()
         now = time.time()
 
