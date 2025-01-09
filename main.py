@@ -19,20 +19,23 @@ def get_tpot(content: str):
     """
     start_time = time.time()
     chat_response = client.chat.completions.create(
-        model="Qwen/Qwen2.5-3B",
+        model="Qwen/Qwen2.5-7B-Instruct",
         messages=[
             {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
             {"role": "user", "content": content},
         ],
         temperature=0.7,
         top_p=0.8,
-        max_tokens=2048,
+        max_tokens=4096,
     )
 
     total_time = time.time() - start_time
     complete_tokens = chat_response.usage.completion_tokens
     tpot = complete_tokens / total_time if total_time > 0 else float('inf')
 
+    generated_response = chat_response.choices[0].message.content
+    print("Generated Response:")
+    print(generated_response)
     return tpot
 
 
@@ -42,14 +45,14 @@ def get_ttft(content: str):
     """
     start_time = time.time()
     chat_response = client.chat.completions.create(
-        model="Qwen/Qwen2.5-3B",
+        model="Qwen/Qwen2.5-7B-Instruct",
         messages=[
             {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
             {"role": "user", "content": content},
         ],
         temperature=0.7,
         top_p=0.8,
-        max_tokens=2048,
+        max_tokens=4096,
         stream=True,
     )
 
@@ -198,6 +201,9 @@ def simulate_requests(mode, load_scenario):
 
 
 if __name__ == "__main__":
+    # response_fixed_length(20000)
+    # response_fixed_length(5000)
+    # exit(0)
     mode = "tpot"
     load_scenario = "high"
 
