@@ -14,6 +14,7 @@ client = OpenAI(
 
 MAX_OUTPUT_TOKENS = 1024
 
+
 def get_tpot(content: str, priority=0):
     """
     Measure the time to generate all tokens (Total Processing Time per Token - TPOT).
@@ -60,12 +61,11 @@ def get_ttft(content: str, priority=0):
             "priority": 0
         }
     )
-
+    ttft = None
     for chunk in chat_response:
-        ttft = time.time() - start_time
-        break
+        if not ttft:
+            ttft = time.time() - start_time
 
-    chat_response.close()
     return ttft
 
 
@@ -132,11 +132,10 @@ def _process_event(idx, event, start_sim_time, mode, all_events):
 
     metric = response_fixed_length(target_len, mode=mode)
     if mode == "ttft":
-        print(
-            f"[{idx + 1}/{len(all_events)}] User {user_id} | target_len={target_len} | ttft = {metric:.4f}")
+        result_str = f"[{idx + 1}/{len(all_events)}] User {user_id} | target_len={target_len} | ttft = {metric:.4f}"
     else:
-        print(
-            f"[{idx + 1}/{len(all_events)}] User {user_id} | target_len={target_len} | tpot = {metric:.4f}")
+        result_str = f"[{idx + 1}/{len(all_events)}] User {user_id} | target_len={target_len} | tpot = {metric:.4f}"
+    # result_list.append(result_str)
 
 
 def simulate_requests(mode, load_scenario):
@@ -149,21 +148,21 @@ def simulate_requests(mode, load_scenario):
             "lambda_requests": 5,
             "lambda_frequency": 0.05,
             "weights": [0.5, 0.3, 0.15, 0.05],
-            "length_lambdas": [20, 100, 2000, 15000]
+            "length_lambdas": [20, 100, 5000, 14000]
         },
         "medium": {
             "user_count": 12,
             "lambda_requests": 10,
             "lambda_frequency": 0.2,
             "weights": [0.2, 0.3, 0.35, 0.15],
-            "length_lambdas": [20, 100, 2000, 20000]
+            "length_lambdas": [20, 100, 5000, 14000]
         },
         "high": {
             "user_count": 24,
             "lambda_requests": 10,
             "lambda_frequency": 0.4,
             "weights": [0.1, 0.2, 0.35, 0.35],
-            "length_lambdas": [100, 1500, 5000, 30000]
+            "length_lambdas": [100, 1500, 5000, 14000]
         }
     }
 
@@ -197,6 +196,7 @@ def simulate_requests(mode, load_scenario):
     all_events.sort(key=lambda x: x[0])
 
     start_sim_time = time.time()
+    result_list = []
     with ThreadPoolExecutor(max_workers=user_count) as executor:
         futures = []
         for idx, event in enumerate(all_events):
@@ -208,15 +208,25 @@ def simulate_requests(mode, load_scenario):
                                            all_events))
         for future in as_completed(futures):
             _ = future.result()
+    return result_list
 
 
 if __name__ == "__main__":
     # response_fixed_length(20000)
     # response_fixed_length(5000)
     # exit(0)
-    mode = "tpot"
+    mode = "ttft"
     load_scenario = "high"
 
     print(
         f"Starting simulation with mode={mode}, load_scenario={load_scenario}...")
-    simulate_requests(mode=mode, load_scenario=load_scenario)
+    results = simulate_requests(mode=mode, load_scenario=load_scenario)
+
+    current_dir = os.path.abspath(os.path.dirname(__file__))
+    result_file_path = os.path.join(
+        current_dir, "results", f"with_priority_{mode}.log")
+
+    os.makedirs(os.path.dirname(result_file_path), exist_ok=True)
+    with open(result_file_path, "w", encoding="utf-8") as f:
+        for line in results:
+            f.write(line + "\n")
