@@ -993,7 +993,7 @@ class Scheduler:
         swapped_queue = deque(sorted(self.swapped, key=self._get_priority))
         if is_swapped:
             if waiting_queue and self._get_priority(waiting_queue[0]) > self._get_priority(swapped_queue[0]):
-                return True # self.scheduler_config.policy == 'active_priority'
+                return self.scheduler_config.policy == 'active_priority'
         else:
             return True
         return False
@@ -1494,6 +1494,7 @@ class Scheduler:
         else:
             preemption_mode = PreemptionMode.RECOMPUTE
 
+        preemption_mode = PreemptionMode.SWAP
         if self.num_cumulative_preemption % 50 == 0:
             logger.warning(
                 "Sequence group %s is preempted by %s mode because there is "

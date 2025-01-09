@@ -12,6 +12,7 @@ client = OpenAI(
     base_url=openai_api_base,
 )
 
+MAX_OUTPUT_TOKENS = 1024
 
 def get_tpot(content: str, priority=0):
     """
@@ -19,14 +20,14 @@ def get_tpot(content: str, priority=0):
     """
     start_time = time.time()
     chat_response = client.chat.completions.create(
-        model="Qwen/Qwen2.5-7B-Instruct",
+        model="Qwen/Qwen2.5-3B",
         messages=[
             {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
             {"role": "user", "content": content},
         ],
         temperature=0.7,
         top_p=0.8,
-        max_tokens=4096,
+        max_tokens=MAX_OUTPUT_TOKENS,
         extra_body={
             "priority": 0
         }
@@ -46,14 +47,14 @@ def get_ttft(content: str, priority=0):
     """
     start_time = time.time()
     chat_response = client.chat.completions.create(
-        model="Qwen/Qwen2.5-7B-Instruct",
+        model="Qwen/Qwen2.5-3B",
         messages=[
             {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
             {"role": "user", "content": content},
         ],
         temperature=0.7,
         top_p=0.8,
-        max_tokens=4096,
+        max_tokens=MAX_OUTPUT_TOKENS,
         stream=True,
         extra_body={
             "priority": 0
