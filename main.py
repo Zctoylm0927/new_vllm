@@ -3,6 +3,8 @@ import numpy as np
 import os
 from openai import OpenAI
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import threading
+print_lock = threading.Lock()
 # Initialize OpenAI API client
 openai_api_key = "EMPTY"
 openai_api_base = "http://localhost:8000/v1"
@@ -21,7 +23,7 @@ def get_tpot(content: str, priority=0):
     """
     start_time = time.time()
     chat_response = client.chat.completions.create(
-        model="Qwen/Qwen2.5-3B",
+        model="Qwen/Qwen2.5-7B-Instruct",
         messages=[
             {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
             {"role": "user", "content": content},
@@ -48,7 +50,7 @@ def get_ttft(content: str, priority=0):
     """
     start_time = time.time()
     chat_response = client.chat.completions.create(
-        model="Qwen/Qwen2.5-3B",
+        model="Qwen/Qwen2.5-7B-Instruct",
         messages=[
             {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
             {"role": "user", "content": content},
@@ -135,7 +137,8 @@ def _process_event(idx, event, start_sim_time, mode, all_events):
         result_str = f"[{idx + 1}/{len(all_events)}] User {user_id} | target_len={target_len} | ttft = {metric:.4f}"
     else:
         result_str = f"[{idx + 1}/{len(all_events)}] User {user_id} | target_len={target_len} | tpot = {metric:.4f}"
-    # result_list.append(result_str)
+    with print_lock:
+        print(result_str)
 
 
 def simulate_requests(mode, load_scenario):
@@ -159,7 +162,7 @@ def simulate_requests(mode, load_scenario):
         },
         "high": {
             "user_count": 24,
-            "lambda_requests": 10,
+            "lambda_requests": 5,
             "lambda_frequency": 0.4,
             "weights": [0.1, 0.2, 0.35, 0.35],
             "length_lambdas": [100, 1500, 5000, 14000]
