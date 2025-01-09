@@ -32,7 +32,7 @@ def get_tpot(content: str, priority=0):
         top_p=0.8,
         max_tokens=MAX_OUTPUT_TOKENS,
         extra_body={
-            "priority": 0
+            "priority": priority
         }
     )
 
@@ -60,7 +60,7 @@ def get_ttft(content: str, priority=0):
         max_tokens=MAX_OUTPUT_TOKENS,
         stream=True,
         extra_body={
-            "priority": 0
+            "priority": priority
         }
     )
     ttft = None
@@ -154,14 +154,14 @@ def simulate_requests(mode, load_scenario):
             "length_lambdas": [20, 100, 5000, 14000]
         },
         "medium": {
-            "user_count": 12,
+            "user_count": 8,
             "lambda_requests": 10,
             "lambda_frequency": 0.2,
             "weights": [0.2, 0.3, 0.35, 0.15],
             "length_lambdas": [20, 100, 5000, 14000]
         },
         "high": {
-            "user_count": 24,
+            "user_count": 8,
             "lambda_requests": 5,
             "lambda_frequency": 0.4,
             "weights": [0.1, 0.2, 0.35, 0.35],
