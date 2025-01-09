@@ -991,9 +991,11 @@ class Scheduler:
         # print(self.scheduler_config.policy)
         waiting_queue = deque(sorted(self.waiting, key=self._get_priority))
         swapped_queue = deque(sorted(self.swapped, key=self._get_priority))
+        # if waiting_queue:
+        #     print(self._get_priority(waiting_queue[0]))
         if is_swapped:
-            if waiting_queue and self._get_priority(waiting_queue[0]) > self._get_priority(swapped_queue[0]):
-                return self.scheduler_config.policy == 'active_priority'
+            if waiting_queue and swapped_queue and self._get_priority(waiting_queue[0]) > self._get_priority(swapped_queue[0]):
+                return self.scheduler_config.policy == 'priority'
         else:
             return True
         return False
