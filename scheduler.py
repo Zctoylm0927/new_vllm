@@ -873,13 +873,14 @@ class Scheduler:
         seq_groups: List[ScheduledSequenceGroup] = []
 
         waiting_queue = self.waiting
-        if self.scheduler_config.policy == 'active_priority':
-            waiting_queue = deque(sorted(self.waiting, key=self._get_priority))
+        # print(waiting_queue)
+        # if self.scheduler_config.policy == 'priority':
+        #     waiting_queue = deque(sorted(self.waiting, key=self._get_priority))
 
         leftover_waiting_sequences: Deque[SequenceGroup] = deque()
         while self._passed_delay(time.time()) and waiting_queue:
             seq_group = waiting_queue[0]
-
+            
             waiting_seqs = seq_group.get_seqs(status=SequenceStatus.WAITING)
             assert len(waiting_seqs) == 1, (
                 "Waiting sequence group should have only one prompt "
@@ -989,13 +990,25 @@ class Scheduler:
         This is used to preempt active requests to schedule new requests.
         """
         # print(self.scheduler_config.policy)
-        waiting_queue = deque(sorted(self.waiting, key=self._get_priority))
-        swapped_queue = deque(sorted(self.swapped, key=self._get_priority))
-        # if waiting_queue:
-        #     print(self._get_priority(waiting_queue[0]))
+        max_wait_group = None
+        for seq_group in self.waiting:
+            if max_wait_group is None:
+                max_wait_group = seq_group
+            elif self._get_priority(seq_group) > self._get_priority(max_wait_group):
+                max_wait_group = seq_group
+        max_swap_group = None
+        for seq_group in self.swapped:
+            if max_swap_group is None:
+                max_swap_group = seq_group
+            elif self._get_priority(seq_group) > self._get_priority(max_swap_group):
+                max_swap_group = seq_group
         if is_swapped:
-            if waiting_queue and swapped_queue and self._get_priority(waiting_queue[0]) > self._get_priority(swapped_queue[0]):
-                return self.scheduler_config.policy == 'priority'
+            #print(self._get_priority(swapped_queue[0]))
+            #print(swapped_queue)
+            # if self.scheduler_config.policy == 'priority':
+            #     if max_wait_group and max_swap_group and self._get_priority(max_wait_group) > self._get_priority(max_swap_group):
+            #         return True
+            return False
         else:
             return True
         return False
@@ -1027,12 +1040,13 @@ class Scheduler:
         swapped_in = SchedulerSwappedInOutputs.create_empty()
 
         # If any requests are swapped, prioritized swapped requests.
+        
+        print("[1]")
         if self._should_active_preempt(self.swapped):
-            #print("[1]")
             prefills = self._schedule_prefills(budget,
                                                curr_loras,
                                                enable_chunking=False)
-
+        print("[2]")
         if len(prefills.seq_groups
                ) == 0 and self.scheduler_config.policy == "priority":
             self._schedule_priority_preemption(budget)
@@ -1041,6 +1055,7 @@ class Scheduler:
         # NOTE: If `_schedule_prefills` doesn't enable chunking, self.running
         # only contains decode requests, not chunked prefills.
         if len(prefills.seq_groups) == 0:
+            print("[3]")
             running_scheduled = self._schedule_running(budget,
                                                        curr_loras,
                                                        enable_chunking=False)
