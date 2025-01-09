@@ -1,3 +1,7 @@
 env.py
 test*
 __pycache__/
+offline.py
+online.py
+generate_request.py
+request.json
