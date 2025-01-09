@@ -13,7 +13,7 @@ client = OpenAI(
 )
 
 
-def get_tpot(content: str):
+def get_tpot(content: str, priority=0):
     """
     Measure the time to generate all tokens (Total Processing Time per Token - TPOT).
     """
@@ -27,6 +27,9 @@ def get_tpot(content: str):
         temperature=0.7,
         top_p=0.8,
         max_tokens=4096,
+        extra_body={
+            "priority": 0
+        }
     )
 
     total_time = time.time() - start_time
@@ -34,12 +37,10 @@ def get_tpot(content: str):
     tpot = complete_tokens / total_time if total_time > 0 else float('inf')
 
     generated_response = chat_response.choices[0].message.content
-    print("Generated Response:")
-    print(generated_response)
     return tpot
 
 
-def get_ttft(content: str):
+def get_ttft(content: str, priority=0):
     """
     Measure the Time to First Token (TTFT) during streaming output.
     """
@@ -54,6 +55,9 @@ def get_ttft(content: str):
         top_p=0.8,
         max_tokens=4096,
         stream=True,
+        extra_body={
+            "priority": 0
+        }
     )
 
     for chunk in chat_response:
@@ -109,9 +113,9 @@ def response_fixed_length(target_len, mode="tpot"):
         prompt = f.read()
 
     if mode == "ttft":
-        metric_value = get_ttft(prompt)
+        metric_value = get_ttft(prompt, priority=target_len)
     else:
-        metric_value = get_tpot(prompt)
+        metric_value = get_tpot(prompt, priority=target_len)
 
     return metric_value
 
@@ -121,12 +125,17 @@ def _process_event(idx, event, start_sim_time, mode, all_events):
     now = time.time()
     time_elapsed = now - start_sim_time
     wait_time = scheduled_send_time - time_elapsed
-    print(wait_time)
+    # print(wait_time)
     if wait_time > 0:
         time.sleep(wait_time)
 
     metric = response_fixed_length(target_len, mode=mode)
-    print(f"[{idx + 1}/{len(all_events)}] User {user_id} | target_len={target_len} | mode={mode} => {metric:.4f}")
+    if mode == "ttft":
+        print(
+            f"[{idx + 1}/{len(all_events)}] User {user_id} | target_len={target_len} | ttft = {metric:.4f}")
+    else:
+        print(
+            f"[{idx + 1}/{len(all_events)}] User {user_id} | target_len={target_len} | tpot = {metric:.4f}")
 
 
 def simulate_requests(mode, load_scenario):
@@ -150,8 +159,8 @@ def simulate_requests(mode, load_scenario):
         },
         "high": {
             "user_count": 24,
-            "lambda_requests": 20,
-            "lambda_frequency": 0.5,
+            "lambda_requests": 10,
+            "lambda_frequency": 0.4,
             "weights": [0.1, 0.2, 0.35, 0.35],
             "length_lambdas": [100, 1500, 5000, 30000]
         }
