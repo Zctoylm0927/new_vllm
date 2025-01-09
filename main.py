@@ -32,7 +32,7 @@ def get_tpot(content: str, priority=0):
         top_p=0.8,
         max_tokens=MAX_OUTPUT_TOKENS,
         extra_body={
-            "priority": priority
+            "priority": 0
         }
     )
 
@@ -60,7 +60,7 @@ def get_ttft(content: str, priority=0):
         max_tokens=MAX_OUTPUT_TOKENS,
         stream=True,
         extra_body={
-            "priority": priority
+            "priority": 0
         }
     )
     ttft = None
@@ -155,14 +155,14 @@ def simulate_requests(mode, load_scenario):
         },
         "medium": {
             "user_count": 8,
-            "lambda_requests": 10,
+            "lambda_requests": 15,
             "lambda_frequency": 0.2,
             "weights": [0.2, 0.3, 0.35, 0.15],
             "length_lambdas": [20, 100, 5000, 14000]
         },
         "high": {
             "user_count": 8,
-            "lambda_requests": 5,
+            "lambda_requests": 30,
             "lambda_frequency": 0.4,
             "weights": [0.1, 0.2, 0.35, 0.35],
             "length_lambdas": [100, 1500, 5000, 14000]
@@ -199,7 +199,6 @@ def simulate_requests(mode, load_scenario):
     all_events.sort(key=lambda x: x[0])
 
     start_sim_time = time.time()
-    result_list = []
     with ThreadPoolExecutor(max_workers=user_count) as executor:
         futures = []
         for idx, event in enumerate(all_events):
@@ -211,25 +210,15 @@ def simulate_requests(mode, load_scenario):
                                            all_events))
         for future in as_completed(futures):
             _ = future.result()
-    return result_list
 
 
 if __name__ == "__main__":
     # response_fixed_length(20000)
     # response_fixed_length(5000)
     # exit(0)
-    mode = "ttft"
+    mode = "tpot"
     load_scenario = "high"
 
     print(
         f"Starting simulation with mode={mode}, load_scenario={load_scenario}...")
-    results = simulate_requests(mode=mode, load_scenario=load_scenario)
-
-    current_dir = os.path.abspath(os.path.dirname(__file__))
-    result_file_path = os.path.join(
-        current_dir, "results", f"with_priority_{mode}.log")
-
-    os.makedirs(os.path.dirname(result_file_path), exist_ok=True)
-    with open(result_file_path, "w", encoding="utf-8") as f:
-        for line in results:
-            f.write(line + "\n")
+    simulate_requests(mode=mode, load_scenario=load_scenario)
