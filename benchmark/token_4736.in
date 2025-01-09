@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from abc import abstractmethod
 from enum import Enum
 from typing import Callable, List, Optional, Tuple
@@ -537,4 +538,3 @@ class FusedMoE(torch.nn.Module):
                 param_data[expert_id] = loaded_weight
 
 
-please explain the details of the code above.

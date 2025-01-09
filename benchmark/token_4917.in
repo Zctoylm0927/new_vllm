@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from collections import deque
 from dataclasses import dataclass
 from typing import (TYPE_CHECKING, Deque, Dict, Iterable, List, Optional, Set,
@@ -591,4 +592,3 @@ class SchedulerOutput:
     free_encoder_input_ids: List[Tuple[str, int]]
 
 
-please explain the details of the code above.

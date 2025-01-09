@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import os
 
 from triton.runtime.cache import (FileCacheManager, default_cache_dir,
@@ -53,4 +54,3 @@ class CustomCacheManager(FileCacheManager):
                 raise RuntimeError("Could not create or locate cache dir")
 
 
-please explain the details of the code above.

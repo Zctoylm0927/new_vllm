@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # Adapted from
 # https://github.com/huggingface/transformers/blob/19e6e80e10118f855137b90740936c0b11ac397f/src/transformers/models/qwen2_vl/modeling_qwen2_vl.py
 # Copyright 2024 The Qwen team.
@@ -1394,4 +1395,3 @@ class Qwen2VLForConditionalGeneration(nn.Module, SupportsMultiModal,
                 weight_loader(param, loaded_weight)
 
 
-please explain the details of the code above.

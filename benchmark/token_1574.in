@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import os
 import warnings
 from pathlib import Path
@@ -198,4 +199,3 @@ def get_lora_tokenizer(lora_request: LoRARequest, *args,
 get_lora_tokenizer_async = make_async(get_lora_tokenizer)
 
 
-please explain the details of the code above.

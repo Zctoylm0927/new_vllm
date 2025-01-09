@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import enum
 import os
 from contextlib import contextmanager
@@ -337,4 +338,3 @@ def global_force_attn_backend_context_manager(
         global_force_attn_backend(original_value)
 
 
-please explain the details of the code above.

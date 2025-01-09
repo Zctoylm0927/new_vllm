@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # Copyright 2024 The vLLM team.
 # Copyright 2024 Microsoft and the HuggingFace Inc. team. All rights reserved.
 #
@@ -763,4 +764,3 @@ class Phi3VForCausalLM(nn.Module, SupportsMultiModal, SupportsPP):
             self.embed_tokens = self.language_model.model.embed_tokens
 
 
-please explain the details of the code above.

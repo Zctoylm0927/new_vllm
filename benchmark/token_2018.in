@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 """PyTorch MAMBA model."""
 from typing import Iterable, List, Optional, Tuple
 
@@ -247,4 +248,3 @@ class MambaForCausalLM(nn.Module, HasInnerState, IsAttentionFree):
             weight_loader(param, loaded_weight)
 
 
-please explain the details of the code above.

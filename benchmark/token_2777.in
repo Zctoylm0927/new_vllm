@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # Copyright 2024 BigCode and the HuggingFace Inc. team. All rights reserved.
 #
 # This code is based on EleutherAI's GPT-NeoX library and the GPT-NeoX
@@ -336,4 +337,3 @@ class Starcoder2ForCausalLM(nn.Module, SupportsPP):
                 weight_loader(param, loaded_weight)
 
 
-please explain the details of the code above.

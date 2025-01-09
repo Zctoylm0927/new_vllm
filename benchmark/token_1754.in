@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 """This file is a pure Python wrapper for the cudart library.
 It avoids the need to compile a separate shared library, and is
 convenient for use when we just need to call a few functions.
@@ -172,4 +173,3 @@ class CudaRTLibrary:
         return devPtr
 
 
-please explain the details of the code above.

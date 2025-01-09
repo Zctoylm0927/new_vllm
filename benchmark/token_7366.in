@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import time
 from dataclasses import dataclass
 from typing import (TYPE_CHECKING, Any, Callable, Dict, List, Optional, Tuple,
@@ -835,4 +836,3 @@ def _make_decode_output(
     return SamplerOutput(sampler_outputs)
 
 
-please explain the details of the code above.

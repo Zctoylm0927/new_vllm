@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 """Attention layer ROCm GPUs."""
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any, Dict, List, Optional, Tuple, Type
@@ -681,4 +682,3 @@ def _use_rocm_custom_paged_attention(qtype: torch.dtype, head_size: int,
             and (gqa_ratio >= 1 and gqa_ratio <= 16) and max_seq_len <= 32768)
 
 
-please explain the details of the code above.

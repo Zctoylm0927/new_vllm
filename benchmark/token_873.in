@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import dataclasses
 from typing import Dict, Optional, Tuple
 
@@ -105,4 +106,3 @@ class MultiStepTPUWorker(TPUWorker):
             return model_input, worker_input, {}
 
 
-please explain the details of the code above.

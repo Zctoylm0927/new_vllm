@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import os
 from functools import partial
 from typing import Any, Awaitable, List, Optional, Set, Tuple, Union
@@ -377,4 +378,3 @@ def _async_driver_method_invoker(driver, method: str, *args, **kwargs):
     return driver.execute_method(method, *args, **kwargs).get()
 
 
-please explain the details of the code above.

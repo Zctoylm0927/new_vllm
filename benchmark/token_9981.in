@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # ruff: noqa: SIM117
 import collections
 import copy
@@ -1181,4 +1182,3 @@ def get_model_loader(load_config: LoadConfig) -> BaseModelLoader:
     return DefaultModelLoader(load_config)
 
 
-please explain the details of the code above.

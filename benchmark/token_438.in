@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # Adapted from
 #  https://github.com/modelscope/ms-swift/blob/v2.4.2/swift/utils/module_mapping.py
 
@@ -69,4 +70,3 @@ class MultiModelKeys(ModelKeys):
                               **kwargs)
 
 
-please explain the details of the code above.

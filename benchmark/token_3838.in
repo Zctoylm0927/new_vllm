@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple, Type
 
@@ -447,4 +448,3 @@ class BlocksparseFlashAttentionImpl(AttentionImpl):
         return output.view(num_tokens, hidden_size)
 
 
-please explain the details of the code above.

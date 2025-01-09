@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from typing import Optional
 
 import torch
@@ -106,4 +107,3 @@ def pack_fp8_to_int32(fp8_tensor: torch.Tensor) -> torch.Tensor:
                        *fp8_tensor.shape[1:]).contiguous()
 
 
-please explain the details of the code above.

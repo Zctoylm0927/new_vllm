@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # Adapted from
 # https://huggingface.co/Qwen/Qwen-7B/blob/main/modeling_qwen.py
 # Copyright (c) Alibaba Cloud.
@@ -1073,4 +1074,3 @@ class QWenLMHeadModel(QWenBaseModel, SupportsLoRA):
             return QWenLLM(vllm_config=vllm_config)
 
 
-please explain the details of the code above.

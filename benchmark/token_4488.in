@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 """A GPU worker class."""
 import gc
 import os
@@ -503,4 +504,3 @@ def raise_if_cache_size_invalid(num_gpu_blocks, block_size, is_attention_free,
             "initializing the engine.")
 
 
-please explain the details of the code above.

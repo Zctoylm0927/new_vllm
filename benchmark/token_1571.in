@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from typing import Any, Dict, List, Optional
 
 import torch
@@ -190,4 +191,3 @@ class DeepSpeedFPParameter(nn.Parameter):
             q_bits=self.quant_config.weight_bits)
 
 
-please explain the details of the code above.

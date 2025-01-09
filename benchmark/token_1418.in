@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 """
 Based on:
 Chen, L., Ye, Z., Wu, Y., Zhuo, D., Ceze, L., & Krishnamurthy, A. (2023). 
@@ -168,4 +169,3 @@ except AttributeError:
     bgmv_expand = _bgmv_expand
 
 
-please explain the details of the code above.

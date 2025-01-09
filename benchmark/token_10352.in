@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import math
 import re
 from array import array
@@ -1291,4 +1292,3 @@ class MolmoForCausalLM(nn.Module, SupportsMultiModal, SupportsPP):
         weight_loader(param, embedding_weight)
 
 
-please explain the details of the code above.

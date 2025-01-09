@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 ###############################################################################
 # Copyright (C) 2024 Habana Labs, Ltd. an Intel Company
 ###############################################################################
@@ -103,4 +104,3 @@ class HPUPagedAttention:
         cache_ops.copy_blocks(key_caches, value_caches, src_to_dists)
 
 
-please explain the details of the code above.

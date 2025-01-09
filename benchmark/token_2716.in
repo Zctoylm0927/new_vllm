@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import copy
 from collections import defaultdict
 from dataclasses import asdict, dataclass, field
@@ -354,4 +355,3 @@ class layerwise_profile(profile):
         self.results = LayerwiseProfileResults(self.profiler.kineto_results)
 
 
-please explain the details of the code above.

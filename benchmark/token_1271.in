@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import importlib
 import importlib.util
 import os
@@ -161,4 +162,3 @@ class ToolParserManager:
         spec.loader.exec_module(module)
 
 
-please explain the details of the code above.

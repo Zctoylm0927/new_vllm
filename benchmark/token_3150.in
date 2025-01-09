@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # Adapted from
 # https://github.com/huggingface/transformers/blob/v4.40.1/src/transformers/models/olmo/modeling_olmo.py
 # Copyright 2024 The vLLM team.
@@ -397,4 +398,3 @@ class OlmoForCausalLM(nn.Module, SupportsPP):
                 weight_loader(param, loaded_weight)
 
 
-please explain the details of the code above.

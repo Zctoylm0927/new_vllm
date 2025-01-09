@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import asyncio
 import time
 from typing import AsyncGenerator, AsyncIterator, Dict, List, Optional
@@ -537,4 +538,3 @@ class OpenAIServingCompletion(OpenAIServing):
         )
 
 
-please explain the details of the code above.

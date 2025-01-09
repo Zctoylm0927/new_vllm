@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import pickle
 import signal
 from contextlib import contextmanager
@@ -368,4 +369,3 @@ def run_mp_engine(engine_args: AsyncEngineArgs, usage_context: UsageContext,
         raise e
 
 
-please explain the details of the code above.

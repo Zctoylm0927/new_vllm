@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # adapted from https://huggingface.co/OpenGVLab/InternVL2-4B/blob/main/modeling_internvl_chat.py
 # --------------------------------------------------------
 # InternVL
@@ -668,4 +669,3 @@ class InternVLChatModel(nn.Module, SupportsMultiModal, SupportsPP):
         loader.load_weights(weights)
 
 
-please explain the details of the code above.

@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 """A block manager that manages token blocks."""
 from typing import Dict, List, Optional
 from typing import Sequence as GenericSequence
@@ -505,4 +506,3 @@ class SelfAttnBlockSpaceManager(BlockSpaceManager):
             return AllocStatus.LATER
 
 
-please explain the details of the code above.

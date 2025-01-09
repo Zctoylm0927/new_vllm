@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from typing import List, Optional, Tuple, Union
 
 import torch
@@ -254,4 +255,3 @@ def normalize_e4m3fn_to_e4m3fnuz(
     return weight, weight_scale, input_scale
 
 
-please explain the details of the code above.

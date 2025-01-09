@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import asyncio
 from abc import abstractmethod
 from typing import Any, Awaitable, Dict, List, Optional, Set, Tuple, Union
@@ -212,4 +213,3 @@ class DistributedGPUExecutorAsync(DistributedGPUExecutor, ExecutorAsyncBase):
         raise NotImplementedError
 
 
-please explain the details of the code above.

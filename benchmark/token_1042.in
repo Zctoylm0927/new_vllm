@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import os
 from typing import Mapping, Optional
 
@@ -119,4 +120,3 @@ def log_tracing_disabled_warning() -> None:
         "Received a request with trace context but tracing is disabled")
 
 
-please explain the details of the code above.

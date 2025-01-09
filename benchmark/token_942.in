@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import os
 import sys
 from abc import abstractmethod
@@ -102,4 +103,3 @@ class TorchCompileWrapperWithCustomDispatcher:
         self.__class__.forward.__code__ = self.original_code_object
 
 
-please explain the details of the code above.

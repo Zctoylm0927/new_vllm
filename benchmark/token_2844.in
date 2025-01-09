@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import os
 import re
 from dataclasses import dataclass
@@ -352,4 +353,3 @@ class MistralTokenizer:
         return tokens
 
 
-please explain the details of the code above.

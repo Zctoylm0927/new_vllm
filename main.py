@@ -26,7 +26,7 @@ def get_tpot(content: str):
         ],
         temperature=0.7,
         top_p=0.8,
-        max_tokens=512,
+        max_tokens=2048,
     )
 
     total_time = time.time() - start_time
@@ -49,7 +49,7 @@ def get_ttft(content: str):
         ],
         temperature=0.7,
         top_p=0.8,
-        max_tokens=512,
+        max_tokens=2048,
         stream=True,
     )
 
@@ -132,25 +132,25 @@ def simulate_requests(mode, load_scenario):
     """
     scenario_configs = {
         "low": {
-            "user_count": 2,
-            "lambda_requests": 3,
-            "lambda_frequency": 0.5,
+            "user_count": 8,
+            "lambda_requests": 5,
+            "lambda_frequency": 0.05,
             "weights": [0.5, 0.3, 0.15, 0.05],
             "length_lambdas": [20, 100, 2000, 15000]
         },
         "medium": {
-            "user_count": 5,
-            "lambda_requests": 5,
-            "lambda_frequency": 1.0,
-            "weights": [0.5, 0.3, 0.15, 0.05],
-            "length_lambdas": [20, 100, 2000, 15000]
+            "user_count": 12,
+            "lambda_requests": 10,
+            "lambda_frequency": 0.2,
+            "weights": [0.2, 0.3, 0.35, 0.15],
+            "length_lambdas": [20, 100, 2000, 20000]
         },
         "high": {
-            "user_count": 10,
-            "lambda_requests": 10,
-            "lambda_frequency": 2.0,
-            "weights": [0.2, 0.3, 0.35, 0.15],
-            "length_lambdas": [100, 1500, 5000, 20000]
+            "user_count": 24,
+            "lambda_requests": 20,
+            "lambda_frequency": 0.5,
+            "weights": [0.1, 0.2, 0.35, 0.35],
+            "length_lambdas": [100, 1500, 5000, 30000]
         }
     }
 
@@ -184,7 +184,7 @@ def simulate_requests(mode, load_scenario):
     all_events.sort(key=lambda x: x[0])
 
     start_sim_time = time.time()
-    with ThreadPoolExecutor(max_workers=8) as executor:
+    with ThreadPoolExecutor(max_workers=user_count) as executor:
         futures = []
         for idx, event in enumerate(all_events):
             futures.append(executor.submit(_process_event,

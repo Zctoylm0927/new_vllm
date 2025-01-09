@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import os
 from typing import List, Optional, Tuple, Union
 
@@ -294,4 +295,3 @@ def _insert_kv(
     tpu_v_cache[:, indices] = v
 
 
-please explain the details of the code above.

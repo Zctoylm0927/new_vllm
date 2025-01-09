@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # Copyright 2024 the HuggingFace Inc. team. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -765,4 +766,3 @@ class Idefics3ForConditionalGeneration(nn.Module, SupportsMultiModal,
             tower_model="model.vision_model")
 
 
-please explain the details of the code above.

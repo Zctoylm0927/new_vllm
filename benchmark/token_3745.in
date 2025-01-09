@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # Copyright 2023 The vLLM team.
 # Copyright (c) Google Inc.
 #
@@ -466,4 +467,3 @@ class GemmaForCausalLM(nn.Module, SupportsLoRA, SupportsPP):
                 unloaded_params)
 
 
-please explain the details of the code above.

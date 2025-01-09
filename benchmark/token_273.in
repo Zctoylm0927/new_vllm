@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from typing import Any, Dict, Optional, Union
 
 import torch
@@ -32,4 +33,3 @@ def broadcast_tensor_dict(tensor_dict: Optional[Dict[Any, Union[torch.Tensor,
     return get_tp_group().broadcast_tensor_dict(tensor_dict, src)
 
 
-please explain the details of the code above.

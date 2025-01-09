@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import torch
 import triton
 import triton.language as tl
@@ -317,4 +318,3 @@ def awq_gemm_triton(input: torch.Tensor,
     return result
 
 
-please explain the details of the code above.

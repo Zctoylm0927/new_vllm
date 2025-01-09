@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import argparse
 import dataclasses
 import io
@@ -470,4 +471,3 @@ def tensorize_vllm_model(engine_args: EngineArgs,
         )
 
 
-please explain the details of the code above.

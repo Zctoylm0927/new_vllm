@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 """Attention layer with xFormers and PagedAttention."""
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional, Tuple, Type
@@ -787,4 +788,3 @@ def _make_alibi_bias(
     return attn_biases
 
 
-please explain the details of the code above.

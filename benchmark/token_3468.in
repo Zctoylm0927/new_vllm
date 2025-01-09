@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from functools import cached_property
 from importlib.util import find_spec
 from typing import Dict, List, Optional, Tuple
@@ -401,4 +402,3 @@ def _multinomial(
     return probs.div_(q).argmax(dim=1).view(-1, num_samples)
 
 
-please explain the details of the code above.

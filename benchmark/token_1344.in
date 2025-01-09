@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from typing import Any, Dict, List, Optional
 
 import torch
@@ -165,4 +166,3 @@ class FBGEMMFp8LinearMethod(LinearMethodBase):
             use_per_token_if_dynamic=True)
 
 
-please explain the details of the code above.

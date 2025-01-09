@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # Derived from BART implementation posted on HuggingFace; license below:
 #
 # coding=utf-8
@@ -998,4 +999,3 @@ class BartForConditionalGeneration(nn.Module):
             lm_head_in_weight_loader(lm_head_in_param, shared_embedding_weight)
 
 
-please explain the details of the code above.

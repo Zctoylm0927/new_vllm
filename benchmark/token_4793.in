@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from functools import cached_property
 from typing import (Iterable, List, Literal, Mapping, Optional, Protocol,
                     Tuple, TypedDict, Union)
@@ -552,4 +553,3 @@ class LlavaForConditionalGeneration(nn.Module, SupportsMultiModal, SupportsPP):
         loader.load_weights(weights)
 
 
-please explain the details of the code above.

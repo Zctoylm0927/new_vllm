@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # pylint: disable=unused-argument
 import math
 from dataclasses import dataclass
@@ -1606,4 +1607,3 @@ class LinearScalingRotaryEmbeddingWithLora(BaseLayerWithLoRA):
         return self.base_layer.extra_repr()
 
 
-please explain the details of the code above.

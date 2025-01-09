@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # Copyright 2024- the Outlines developers
 # This file is adapted from
 # https://github.com/outlines-dev/outlines/blob/main/outlines/serve/vllm.py
@@ -222,4 +223,3 @@ def _adapt_tokenizer(tokenizer: PreTrainedTokenizerBase):
     return tokenizer
 
 
-please explain the details of the code above.

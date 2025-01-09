@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import math
 from typing import Iterable, List, Optional, Tuple
 
@@ -257,4 +258,3 @@ class Florence2ForConditionalGeneration(nn.Module):
         loader.load_weights(weights)
 
 
-please explain the details of the code above.

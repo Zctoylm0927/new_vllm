@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import weakref
 from typing import List, Optional, Set, Tuple
 
@@ -136,4 +137,3 @@ class MedusaWorker(NonLLMProposerWorkerBase, Worker):
                 "MedusaWorker does not support beam search.")
 
 
-please explain the details of the code above.

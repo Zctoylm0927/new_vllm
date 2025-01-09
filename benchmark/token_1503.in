@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from typing import List, Optional, Tuple
 
 from .tokenizer import AnyTokenizer
@@ -167,4 +168,3 @@ def detokenize_incrementally(
     return new_tokens, new_text, read_offset, len(output_tokens)
 
 
-please explain the details of the code above.

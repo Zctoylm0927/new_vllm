@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import vllm.envs as envs
 from vllm.executor.multiproc_gpu_executor import (
     MultiprocessingGPUExecutor, MultiprocessingGPUExecutorAsync)
@@ -26,4 +27,3 @@ class MultiprocessingXPUExecutorAsync(MultiprocessingXPUExecutor,
         self.driver_exec_model = make_async(self.driver_worker.execute_model)
 
 
-please explain the details of the code above.

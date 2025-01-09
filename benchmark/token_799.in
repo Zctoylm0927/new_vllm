@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from typing import List, Literal, Sequence, TypedDict, Union, cast, overload
 
 from typing_extensions import TypeIs
@@ -112,4 +113,3 @@ def is_encoder_decoder_inputs(
     return "encoder" in inputs and "decoder" in inputs
 
 
-please explain the details of the code above.

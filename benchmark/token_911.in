@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from typing import List, Optional
 
 from vllm.config import TokenizerPoolConfig
@@ -99,4 +100,3 @@ class TokenizerGroup(BaseTokenizerGroup):
             return self.lora_tokenizers[lora_request.lora_int_id]
 
 
-please explain the details of the code above.

@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import asyncio
 import signal
 from http import HTTPStatus
@@ -103,4 +104,3 @@ def _add_shutdown_handlers(app: FastAPI, server: uvicorn.Server) -> None:
         return Response(status_code=HTTPStatus.INTERNAL_SERVER_ERROR)
 
 
-please explain the details of the code above.

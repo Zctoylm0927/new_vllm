@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from typing import Union
 
 import torch
@@ -37,4 +38,3 @@ def replace_parameter(mod: torch.nn.Module, name: str,
                                torch.nn.Parameter(new, requires_grad=False))
 
 
-please explain the details of the code above.

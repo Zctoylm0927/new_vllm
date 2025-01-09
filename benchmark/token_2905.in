@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import os
 import time
 from collections import defaultdict
@@ -338,4 +339,3 @@ def get_num_nodes_in_placement_group() -> int:
     return num_nodes
 
 
-please explain the details of the code above.

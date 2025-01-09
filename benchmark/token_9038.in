@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import contextlib
 import functools
 import importlib
@@ -982,4 +983,3 @@ names_and_values.update(names_and_values_to_update)
 del names_and_values_to_update, names_and_values, v, k, fn_type
 
 
-please explain the details of the code above.

@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import datetime
 import json
 import logging
@@ -223,4 +224,3 @@ class UsageMessage:
 usage_message = UsageMessage()
 
 
-please explain the details of the code above.

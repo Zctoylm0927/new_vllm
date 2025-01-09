@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -445,4 +446,3 @@ class OlmoeForCausalLM(nn.Module, SupportsPP):
                     weight_loader(param, loaded_weight)
 
 
-please explain the details of the code above.

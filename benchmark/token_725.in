@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from functools import lru_cache, partial
 from typing import Dict, FrozenSet, Iterable, List, Optional, Union
 
@@ -86,4 +87,3 @@ def get_logits_processors(
     return logits_processors
 
 
-please explain the details of the code above.

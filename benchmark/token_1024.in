@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from typing import Callable, List, Tuple, Union
 
 import torch
@@ -119,4 +120,3 @@ class NoBadWordsLogitsProcessor:
                 f" 0 <= token_id < {vocab_size}.")
 
 
-please explain the details of the code above.

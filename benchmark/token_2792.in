@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import json
 import re
 from typing import Dict, List, Sequence, Union
@@ -339,4 +340,3 @@ class Hermes2ProToolParser(ToolParser):
             return None  # do not stream a delta. skip this token ID.
 
 
-please explain the details of the code above.

@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # Adapted from
 # https://github.com/huggingface/transformers/blob/v4.28.0/src/transformers/models/llama/modeling_llama.py
 # Copyright 2023 The vLLM team.
@@ -1119,4 +1120,3 @@ class MiniCPMV(MiniCPMVBaseModel, SupportsLoRA):
         return instance_class(vllm_config=vllm_config, prefix=prefix)
 
 
-please explain the details of the code above.

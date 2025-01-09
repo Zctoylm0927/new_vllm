@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from enum import IntEnum
 from typing import List, Optional
 
@@ -150,4 +151,3 @@ class Pooler(nn.Module):
         return PoolerOutput(outputs=pooled_outputs)
 
 
-please explain the details of the code above.

@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from typing import Callable, List, Optional, Tuple, Type, Union
 
 import torch
@@ -78,4 +79,3 @@ def _verify_and_get_parallel_config(config: ParallelConfig) -> ParallelConfig:
     return config
 
 
-please explain the details of the code above.

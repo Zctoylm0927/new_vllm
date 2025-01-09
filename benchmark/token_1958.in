@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import asyncio
 import os
 from typing import List, Optional
@@ -240,4 +241,3 @@ def _carry_over_env_vars_to_runtime_env(runtime_env: dict) -> None:
     runtime_env["env_vars"] = env_vars
 
 
-please explain the details of the code above.

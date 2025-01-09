@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import torch
 from torch import nn
 from torch.nn.parameter import Parameter
@@ -217,4 +218,3 @@ class MambaMixer(CustomOp):
         return contextualized_states
 
 
-please explain the details of the code above.

@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from typing import Any, Callable, Dict, List, Optional
 
 import torch
@@ -176,4 +177,3 @@ def quantize_in_place_and_get_scales(weight: torch.Tensor) -> torch.Tensor:
     return scales
 
 
-please explain the details of the code above.

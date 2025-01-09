@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # Adapted from
 # https://huggingface.co/OrionStarAI/Orion-14B-Base/blob/main/modeling_orion.py
 # Copyright (c) OrionStar Inc.
@@ -358,4 +359,3 @@ class OrionForCausalLM(nn.Module, SupportsPP):
                 weight_loader(param, loaded_weight)
 
 
-please explain the details of the code above.

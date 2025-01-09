@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from functools import lru_cache
 from pathlib import Path
 from typing import Optional
@@ -39,4 +40,3 @@ def get_vllm_public_assets(filename: str,
     return asset_path
 
 
-please explain the details of the code above.

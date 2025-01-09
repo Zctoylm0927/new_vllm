@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # This file is a pure Python wrapper for the NCCL library.
 # The main purpose is to use NCCL combined with CUDA graph.
 # Before writing this script, we tried the following approach:
@@ -278,4 +279,3 @@ __all__ = [
 ]
 
 
-please explain the details of the code above.

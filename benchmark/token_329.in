@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from typing import List, Optional, Tuple
 
 import torch
@@ -30,4 +31,3 @@ def check_machete_supports_shape(in_features: int, out_featrues: int) \
     return True, None
 
 
-please explain the details of the code above.

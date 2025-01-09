@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import time
 from typing import Any, Dict, Mapping, Optional, Tuple, Union
 
@@ -168,4 +169,3 @@ def _load_generation_config_dict(model_config: ModelConfig) -> Dict[str, Any]:
     return config.to_diff_dict()
 
 
-please explain the details of the code above.

@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import math
 from functools import cached_property
 from typing import (Iterable, List, Literal, Mapping, Optional, Tuple,
@@ -454,4 +455,3 @@ class LlavaNextVideoForConditionalGeneration(nn.Module, SupportsMultiModal,
         loader.load_weights(weights)
 
 
-please explain the details of the code above.

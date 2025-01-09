@@ -19,6 +19,24 @@ def sample_test():
     print(f"Variance: {variance}")
 
 
+def exponential_test():
+    # Rate parameter (λ), which is the inverse of the mean (1/mean)
+    lambda_rate = 0.05
+
+    # Generate 100 samples from an exponential distribution
+    samples = np.random.exponential(scale=1/lambda_rate, size=100)
+    for i, sample in enumerate(samples):
+        # Format to 4 decimal places for better readability
+        print(f"Sample {i + 1}: {sample:.4f}")
+
+    # Calculate the mean and variance of the samples
+    mean = np.mean(samples)
+    variance = np.var(samples)
+
+    print(f"\nMean: {mean:.4f}")
+    print(f"Variance: {variance:.4f}")
+
+
 def compare_token_counts():
     """Compare actual token counts with estimated values in file names."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -120,6 +138,43 @@ def clear_non_token_files():
         print("Target folder does not exist.")
 
 
+def process_in_files():
+    # Locate the benchmark directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    benchmark_dir = os.path.join(script_dir, "../benchmark")
+
+    # Check if the directory exists
+    if not os.path.exists(benchmark_dir):
+        print("Benchmark directory does not exist.")
+        return
+
+    # Process all .in files
+    for file in os.listdir(benchmark_dir):
+        if file.endswith('.in'):
+            file_path = os.path.join(benchmark_dir, file)
+
+            # Read the file content
+            with open(file_path, 'r', encoding='utf-8') as f:
+                lines = f.readlines()
+
+            # Check if the last line is the specific text and remove it
+            if lines and lines[-1].strip() == "please explain the details of the code above.":
+                lines = lines[:-1]  # Remove the last line
+
+            # Add the new instruction at the beginning
+            new_instruction = (
+                "please explain the details of the code as follows and implement a more complex scenario "
+                "based on the following code. Ensure that the code for the implemented scenario is as long as possible.\n"
+            )
+            lines.insert(0, new_instruction)
+
+            # Write the updated content back to the file
+            with open(file_path, 'w', encoding='utf-8') as f:
+                f.writelines(lines)
+
+            print(f"Processed file: {file_path}")
+
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python script_name.py <mode> [arguments]")
@@ -142,6 +197,11 @@ if __name__ == "__main__":
 
     elif mode == "test-sample":
         sample_test()
+
+    elif mode == "test-freq":
+        exponential_test()
+    elif mode == "tmp-revision":
+        process_in_files()
     else:
         print(f"Unknown mode: {mode}")
-        print("Available functionalities: collect, stats, clear, test-sample")
+        print("Available functionalities: collect, stats, clear, test-sample, test-freq")

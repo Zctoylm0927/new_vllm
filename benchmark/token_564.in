@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from functools import lru_cache
 from json import loads as json_loads
 from typing import Optional, Union
@@ -64,4 +65,3 @@ def _cached_build_vllm_token_enforcer_tokenizer_data(
     return build_vllm_token_enforcer_tokenizer_data(tokenizer)
 
 
-please explain the details of the code above.

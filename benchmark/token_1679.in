@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 """KV-Cache Utilities."""
 from dataclasses import dataclass, field
 from typing import List, Optional, Tuple, Union
@@ -194,4 +195,3 @@ def hash_request_tokens(block_size: int,
     return ret
 
 
-please explain the details of the code above.

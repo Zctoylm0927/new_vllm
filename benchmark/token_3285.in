@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from typing import Dict, FrozenSet, List, Optional, Tuple
 
 from vllm.core.block.interfaces import (Block, BlockAllocator, BlockId,
@@ -409,4 +410,3 @@ class NullBlock(Block):
         return self._proxy.content_hash
 
 
-please explain the details of the code above.

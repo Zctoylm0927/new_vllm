@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any, Dict, List, Optional, Union
 
@@ -71,4 +72,3 @@ def create_sort_beams_key_function(eos_token_id: int, length_penalty: float):
     return sort_beams_key
 
 
-please explain the details of the code above.

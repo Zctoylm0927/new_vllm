@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from typing import List, Optional, Tuple
 
 import numpy
@@ -348,4 +349,3 @@ def apply_awq_marlin_linear(
     return output.reshape(out_shape)
 
 
-please explain the details of the code above.

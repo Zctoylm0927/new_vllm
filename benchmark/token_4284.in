@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # Adapted from
 # https://github.com/huggingface/transformers/blob/a5cc30d72ae2dc19af534e4b35c986cc28db1275/src/transformers/models/falcon/modeling_falcon.py
 # Copyright 2023 The vLLM team.
@@ -506,4 +507,3 @@ class FalconForCausalLM(nn.Module, SupportsPP):
             weight_loader(param, loaded_weight)
 
 
-please explain the details of the code above.

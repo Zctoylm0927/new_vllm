@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import multiprocessing
 import queue
 import threading
@@ -363,4 +364,3 @@ class EngineCoreProc(EngineCore):
                 socket.send_multipart((buffer, ), copy=False)
 
 
-please explain the details of the code above.

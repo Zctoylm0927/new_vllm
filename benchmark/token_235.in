@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from dataclasses import dataclass
 from typing import Literal, Tuple
 from urllib.parse import urljoin
@@ -28,4 +29,3 @@ class AudioAsset:
         return urljoin(vLLM_S3_BUCKET_URL, f"{ASSET_DIR}/{self.name}.ogg")
 
 
-please explain the details of the code above.

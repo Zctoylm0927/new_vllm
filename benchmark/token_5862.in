@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 """Utilities for downloading and initializing model weights."""
 import fnmatch
 import glob
@@ -681,4 +682,3 @@ def maybe_remap_kv_scale_name(name: str, params_dict: dict) -> Optional[str]:
     return name
 
 
-please explain the details of the code above.

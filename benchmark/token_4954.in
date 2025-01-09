@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 """An OpenVINO worker class."""
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -588,4 +589,3 @@ class OpenVINOWorker(LoraNotSupportedWorkerBase):
         return total_device_memory * memory_utilization - used_device_mem
 
 
-please explain the details of the code above.

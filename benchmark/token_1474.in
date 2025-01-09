@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 """Utility functions used for tests and benchmarks"""
 
 from typing import List, Optional
@@ -163,4 +164,3 @@ def awq_marlin_quantize(w: torch.Tensor, quant_type: ScalarType,
     return res_list
 
 
-please explain the details of the code above.

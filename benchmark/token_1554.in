@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 """Custom normalization layers."""
 from typing import Optional, Tuple, Union
 
@@ -205,4 +206,3 @@ class GemmaRMSNorm(CustomOp):
         return self.forward_native(x, residual)
 
 
-please explain the details of the code above.

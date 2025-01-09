@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import asyncio
 from typing import List, Mapping, Optional, Union
 
@@ -684,4 +685,3 @@ class InputPreprocessor:
         return self.model_config.is_encoder_decoder
 
 
-please explain the details of the code above.

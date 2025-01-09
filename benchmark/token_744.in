@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # adapted from https://huggingface.co/nvidia/NVLM-D-72B/blob/main/modeling_nvlm_d.py
 # --------------------------------------------------------
 # NVLM-D
@@ -88,4 +89,3 @@ class NVLM_D_Model(InternVLChatModel):
             raise NotImplementedError(msg)
 
 
-please explain the details of the code above.

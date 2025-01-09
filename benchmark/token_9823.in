@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from abc import abstractmethod
 from typing import Dict, List, Optional, Tuple
 
@@ -1098,4 +1099,3 @@ class RowParallelLinear(LinearBase):
         return s
 
 
-please explain the details of the code above.

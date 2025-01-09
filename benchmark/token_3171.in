@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # Supports AQLM compression, see https://github.com/Vahe1994/AQLM
 # and https://arxiv.org/pdf/2401.06118.pdf
 
@@ -371,4 +372,3 @@ class AQLMLinearMethod(LinearMethodBase):
         )
 
 
-please explain the details of the code above.

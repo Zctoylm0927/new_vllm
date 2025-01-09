@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import copy
 from collections import defaultdict
 from functools import cached_property
@@ -1133,4 +1134,3 @@ def prepare_prefill_hidden_states(
         shifts=1, dims=0)) if prefill_hidden_states is not None else None
 
 
-please explain the details of the code above.

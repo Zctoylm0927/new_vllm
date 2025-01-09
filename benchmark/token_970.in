@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import inspect
 from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional, Type
@@ -135,4 +136,3 @@ class QuantizationConfig(ABC):
         raise NotImplementedError
 
 
-please explain the details of the code above.

@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 """
 This file contains the Pydantic schemas for various quantization-related
 parameters. When a relevant quantization technique is specified, these
@@ -84,4 +85,3 @@ class QuantParamSchema(BaseModel):
         return self
 
 
-please explain the details of the code above.

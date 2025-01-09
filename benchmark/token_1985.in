@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 """
 This file contains the command line arguments for the vLLM's
 OpenAI-compatible server. It is kept in a separate file for documentation
@@ -257,4 +258,3 @@ def create_parser_for_docs() -> FlexibleArgumentParser:
     return make_arg_parser(parser_for_docs)
 
 
-please explain the details of the code above.

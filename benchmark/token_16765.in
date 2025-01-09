@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 import dataclasses
 import gc
 import inspect
@@ -1919,4 +1920,3 @@ def _get_max_graph_batch_size(max_num_seqs: int) -> int:
     return _BATCH_SIZES_TO_CAPTURE[-1]
 
 
-please explain the details of the code above.

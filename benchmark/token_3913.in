@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 """This file is used for /tests and /benchmarks"""
 from typing import List, Optional
 
@@ -451,4 +452,3 @@ def awq_pack(
     return pack_cols(q_w, num_bits, size_k, size_n)
 
 
-please explain the details of the code above.

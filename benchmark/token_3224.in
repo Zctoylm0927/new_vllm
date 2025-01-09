@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # pylint: disable=unused-argument
 from typing import TYPE_CHECKING, List, Optional, Union
 
@@ -376,4 +377,3 @@ class RowParallelLinearWithShardedLoRA(RowParallelLinearWithLoRA):
         )
 
 
-please explain the details of the code above.

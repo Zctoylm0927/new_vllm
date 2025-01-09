@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 # Adapted from
 # https://huggingface.co/inceptionai/jais-30b-chat-v3/blob/main/modeling_jais.py
 # Copyright 2023 The vLLM team.
@@ -374,4 +375,3 @@ class JAISLMHeadModel(nn.Module, SupportsPP):
             weight_loader(param, loaded_weight)
 
 
-please explain the details of the code above.

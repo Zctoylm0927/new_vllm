@@ -1,3 +1,4 @@
+please explain the details of the code as follows and implement a more complex scenario based on the following code. Ensure that the code for the implemented scenario is as long as possible.
 from typing import Any, Dict, List, Optional
 
 import torch
@@ -163,4 +164,3 @@ class ModelOptFp8LinearMethod(LinearMethodBase):
             cutlass_fp8_supported=self.cutlass_fp8_supported)
 
 
-please explain the details of the code above.
