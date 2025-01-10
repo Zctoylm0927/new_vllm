@@ -778,6 +778,17 @@ class Scheduler:
             The priority of the sequence group.
         """
         return seq_group.priority, seq_group.arrival_time
+    
+    def _get_finished_time(self, seq_group: SequenceGroup) -> int:
+        """ Get the finished time of the sequence group. Assume
+        the longer seq needs to be finished later.
+        Args:
+            seq_group: The sequence group input.
+        Returns:
+            The finished time of the sequence group.
+        """
+        assert len(seq_group.seqs) == 1
+        return 1-seq_group.seqs[0].get_prompt_len()
 
     def _schedule_priority_preemption(
         self,
@@ -873,14 +884,20 @@ class Scheduler:
         seq_groups: List[ScheduledSequenceGroup] = []
 
         waiting_queue = self.waiting
-        # print(waiting_queue)
-        # if self.scheduler_config.policy == 'priority':
-        #     waiting_queue = deque(sorted(self.waiting, key=self._get_priority))
-
+        # print("[1]")
+        # print("waitng_queue")
+        # for seq in waiting_queue:
+        #     print(seq.first_seq.status)
+        # print("self.waiting")
+        # for seq in self.waiting:
+        #     print(seq.first_seq.status)  
+        if self.scheduler_config.policy == 'fcfs':
+            waiting_queue = deque(sorted(self.waiting, key=self._get_finished_time))
+        
         leftover_waiting_sequences: Deque[SequenceGroup] = deque()
         while self._passed_delay(time.time()) and waiting_queue:
             seq_group = waiting_queue[0]
-            
+            # print("hello: ", seq_group.seqs[0].get_prompt_len())
             waiting_seqs = seq_group.get_seqs(status=SequenceStatus.WAITING)
             assert len(waiting_seqs) == 1, (
                 "Waiting sequence group should have only one prompt "
@@ -978,40 +995,52 @@ class Scheduler:
         if len(seq_groups) > 0:
             self.prev_prompt = True
 
+        # print("[2]")
+        # print("waitng_queue")
+        # for seq in waiting_queue:
+        #     print(seq.first_seq.status)
+        # print("self.waiting")
+        # for seq in self.waiting:
+        #     print(seq.first_seq.status) 
+        self.waiting = waiting_queue
+
         return SchedulerPrefillOutputs(
             seq_groups=seq_groups,
             ignored_seq_groups=ignored_seq_groups,
             num_lookahead_slots=self._get_num_lookahead_slots(
                 is_prefill=True, enable_chunking=enable_chunking))
-        
+
     def _should_active_preempt(self, is_swapped) -> bool:
         """Check if we should preempt active requests.
         
         This is used to preempt active requests to schedule new requests.
         """
-        # print(self.scheduler_config.policy)
         max_wait_group = None
+        log_out = []
+        if self.scheduler_config.policy == 'priority':
+            compared_func = self._get_priority
+        elif self.scheduler_config.policy == 'fcfs':
+            compared_func = self._get_finished_time
         for seq_group in self.waiting:
+            log_out.append(seq_group.first_seq.status)
+            if not seq_group.get_seqs(status=SequenceStatus.WAITING):
+                continue
             if max_wait_group is None:
                 max_wait_group = seq_group
-            elif self._get_priority(seq_group) > self._get_priority(max_wait_group):
+            elif compared_func(seq_group) > compared_func(max_wait_group):
                 max_wait_group = seq_group
+        # print(log_out)
         max_swap_group = None
         for seq_group in self.swapped:
             if max_swap_group is None:
                 max_swap_group = seq_group
-            elif self._get_priority(seq_group) > self._get_priority(max_swap_group):
+            elif compared_func(seq_group) > compared_func(max_swap_group):
                 max_swap_group = seq_group
         if is_swapped:
-            #print(self._get_priority(swapped_queue[0]))
-            #print(swapped_queue)
-            # if self.scheduler_config.policy == 'priority':
-            #     if max_wait_group and max_swap_group and self._get_priority(max_wait_group) > self._get_priority(max_swap_group):
-            #         return True
+            if max_wait_group and max_swap_group and compared_func(max_wait_group) > compared_func(max_swap_group):
+                return True
             return False
-        else:
-            return True
-        return False
+        return True
     
     def _schedule_default(self) -> SchedulerOutputs:
         """Schedule queued requests.
@@ -1040,22 +1069,19 @@ class Scheduler:
         swapped_in = SchedulerSwappedInOutputs.create_empty()
 
         # If any requests are swapped, prioritized swapped requests.
-        
-        print("[1]")
         if self._should_active_preempt(self.swapped):
             prefills = self._schedule_prefills(budget,
                                                curr_loras,
                                                enable_chunking=False)
-        print("[2]")
-        if len(prefills.seq_groups
-               ) == 0 and self.scheduler_config.policy == "priority":
-            self._schedule_priority_preemption(budget)
+
+        # if len(prefills.seq_groups
+        #        ) == 0 and self.scheduler_config.policy == "priority":
+        #     self._schedule_priority_preemption(budget)
 
         # Don't schedule decodes if prefills are scheduled.
         # NOTE: If `_schedule_prefills` doesn't enable chunking, self.running
         # only contains decode requests, not chunked prefills.
         if len(prefills.seq_groups) == 0:
-            print("[3]")
             running_scheduled = self._schedule_running(budget,
                                                        curr_loras,
                                                        enable_chunking=False)
@@ -1250,6 +1276,7 @@ class Scheduler:
         # This function call changes the internal states of the scheduler
         # such as self.running, self.swapped, and self.waiting.
         scheduler_start_time = time.perf_counter()
+
         scheduler_outputs: SchedulerOutputs = self._schedule()
         now = time.time()
 
