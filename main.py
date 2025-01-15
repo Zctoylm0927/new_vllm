@@ -216,7 +216,7 @@ if __name__ == "__main__":
     # response_fixed_length(20000)
     # response_fixed_length(5000)
     # exit(0)
-    mode = "tpot"
+    mode = "ttft"
     load_scenario = "high"
 
     print(

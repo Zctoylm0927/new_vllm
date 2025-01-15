@@ -508,7 +508,7 @@ class Scheduler:
                 chunked number of tokens are scheduled  if
                 `budget.num_batched_tokens` has not enough capacity to schedule
                 all tokens.
-    
+
         Returns:
             SchedulerRunningOutputs.
         """
@@ -778,7 +778,7 @@ class Scheduler:
             The priority of the sequence group.
         """
         return seq_group.priority, seq_group.arrival_time
-    
+
     def _get_finished_time(self, seq_group: SequenceGroup) -> int:
         """ Get the finished time of the sequence group. Assume
         the longer seq needs to be finished later.
@@ -788,7 +788,7 @@ class Scheduler:
             The finished time of the sequence group.
         """
         assert len(seq_group.seqs) == 1
-        return 1-seq_group.seqs[0].get_prompt_len()
+        return seq_group.seqs[0].get_prompt_len()
 
     def _schedule_priority_preemption(
         self,
@@ -818,17 +818,17 @@ class Scheduler:
                                                       SequenceStatus.WAITING,
                                                       False, budget)
 
-            #Only preempt if priority inversion exists
+            # Only preempt if priority inversion exists
             while running_queue and self._get_priority(
                     running_queue[-1]) > self._get_priority(seq_group):
-                #Only preempt if waiting sequence cannot be allocated
+                # Only preempt if waiting sequence cannot be allocated
                 can_allocate = self.block_manager.can_allocate(seq_group)
                 if (num_new_tokens and can_allocate == AllocStatus.OK
                         and budget.can_schedule(num_new_tokens=num_new_tokens,
                                                 num_new_seqs=num_new_seqs)):
                     break
 
-                #Adjust budget to remove the victim sequence group
+                # Adjust budget to remove the victim sequence group
                 vseq_group = running_queue.pop()
                 num_running_tokens = self._get_num_new_tokens(
                     vseq_group, SequenceStatus.RUNNING, False, budget)
@@ -838,11 +838,11 @@ class Scheduler:
                 budget.subtract_num_seqs(vseq_group.request_id,
                                          num_running_seqs)
 
-                #Preempt out the victim sequence group
+                # Preempt out the victim sequence group
                 self._preempt(vseq_group, blocks_to_swap_out)
                 waiting_queue.appendleft(vseq_group)
                 force_preemption_count += 1
-            #Put the sequence back into the waiting queue
+            # Put the sequence back into the waiting queue
             waiting_queue.appendleft(seq_group)
 
         waiting_queue = deque(sorted(waiting_queue, key=self._get_priority))
@@ -890,10 +890,11 @@ class Scheduler:
         #     print(seq.first_seq.status)
         # print("self.waiting")
         # for seq in self.waiting:
-        #     print(seq.first_seq.status)  
+        #     print(seq.first_seq.status)
         if self.scheduler_config.policy == 'fcfs':
-            waiting_queue = deque(sorted(self.waiting, key=self._get_finished_time))
-        
+            waiting_queue = deque(
+                sorted(self.waiting, key=self._get_finished_time))
+
         leftover_waiting_sequences: Deque[SequenceGroup] = deque()
         while self._passed_delay(time.time()) and waiting_queue:
             seq_group = waiting_queue[0]
@@ -1001,7 +1002,7 @@ class Scheduler:
         #     print(seq.first_seq.status)
         # print("self.waiting")
         # for seq in self.waiting:
-        #     print(seq.first_seq.status) 
+        #     print(seq.first_seq.status)
         self.waiting = waiting_queue
 
         return SchedulerPrefillOutputs(
@@ -1012,7 +1013,7 @@ class Scheduler:
 
     def _should_active_preempt(self, is_swapped) -> bool:
         """Check if we should preempt active requests.
-        
+
         This is used to preempt active requests to schedule new requests.
         """
         max_wait_group = None
@@ -1041,10 +1042,10 @@ class Scheduler:
                 return True
             return False
         return True
-    
+
     def _schedule_default(self) -> SchedulerOutputs:
         """Schedule queued requests.
-        
+
         The current policy is designed to optimize the throughput. First,
         it batches as many prefill requests as possible. And it schedules
         decodes. If there's a pressure on GPU memory, decode requests can
@@ -1148,7 +1149,7 @@ class Scheduler:
 
     def _schedule_chunked_prefill(self) -> SchedulerOutputs:
         """Schedule queued requests.
-        
+
         Chunked prefill allows to chunk prefill requests, batch them together
         with decode requests. This policy 1. schedule as many decoding requests
         as possible. 2. schedule chunked prefill requests that are not
